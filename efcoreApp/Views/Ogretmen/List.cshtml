@@ -1,0 +1,35 @@
+@using Microsoft.AspNetCore.Http.Features
+@model IEnumerable<Ogretmen>
+    <h2>Öğretmen Listesi</h2>
+       <a href="/Ogretmen/Create" class="btn btn-primary">Öğretmen Ekleme sayfasına git</a>
+    <hr />
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(m =>m.OgretmenId)</th>
+            <th>@Html.DisplayNameFor(m =>m.Ad)</th>
+            <th>@Html.DisplayNameFor(m=>m.Soyad)</th>
+            <th>@Html.DisplayNameFor(m=>m.Telefon)</th>
+            <th>@Html.DisplayNameFor(m=>m.Eposta)</th>
+            <th>@Html.DisplayNameFor(m=>m.BaslamaTarihi)</th> 
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var ogretmen in Model) //modelden öğretmen sayısı kadar işlem yapar.
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem=>ogretmen.OgretmenId)</td>
+                <td>@Html.DisplayFor(modelItem=>ogretmen.Ad)</td>
+                <td>@Html.DisplayFor(modelItem=>ogretmen.Soyad)</td>
+                <td>@Html.DisplayFor(modelItem=>ogretmen.Telefon)</td>
+                <td>@Html.DisplayFor(modelItem=>ogretmen.Eposta)</td>
+                <td>@Html.DisplayFor(modelItem=>ogretmen.BaslamaTarihi)</td>
+                <td>
+                     <a asp-controller="Ogretmen" asp-action="Edit" asp-route-id="@ogretmen.OgretmenId" class="btn btn-sm btn-primary">Güncelle</a>
+                     <a asp-controller="Ogretmen" asp-action="Delete" asp-route-id="@ogretmen.OgretmenId" class="btn btn-sm btn-danger">Sil</a>
+                </td>
+            </tr>
+           
+        }
+    </tbody>
+</table>
